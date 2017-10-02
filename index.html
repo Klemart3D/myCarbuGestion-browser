@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: ws: 'unsafe-inline' https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://www.gstatic.com; font-src 'self' http://fonts.googleapis.com; media-src *; img-src 'self' data: content:; script-src 'self' https://www.gstatic.com 'unsafe-inline' 'unsafe-eval';">
+        <meta charset="UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/morris.css">
+        <title>myCarbuGestion</title>
+    </head>
+    <body>
+        <header data-role="header" class="ui-header-b" data-position="fixed">
+                <img class="header-logo" src="img/logotype.png" alt="">
+        </header>
+
+        <section class="content">
+            <div class="panel left" id="new">
+                <h1>Nouveau plein</h1>
+                <div id="message">|</div>
+                <form id="add-refueling">
+                    <div class="input-group">
+                        <input type="number" id="kmttl" placeholder="Kilométrage total">
+                      <span class="input-group-addon">km</span>
+                    </div>
+                    <div class="input-group">
+                      <input type="number" step="0.01" id="fuelqtt" placeholder="Quantité">
+                      <span class="input-group-addon">L</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" step="0.001" id="ratio" placeholder="Prix au litre">
+                      <span class="input-group-addon">€</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" id="price" step="0.01" placeholder="Prix total">
+                      <span class="input-group-addon">€</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="station" placeholder="Enseigne" maxlength="30">
+                    </div>
+                    <div class="input-group">    
+                        <select id="fueltype">
+                          <option value="SP95">SP95</option>
+                          <option value="SP98">SP98</option>
+                          <option value="SP95-E10">SP95-E10</option>
+                          <option value="Gasoil">Gasoil</option>
+                          <option value="GPL">GPL</option>
+                        </select>
+                    </div>
+                    <input type="button" class="btn green" id="submit" value="Ajouter ce plein">
+                </form>
+                <hr>
+                <button class="btn blue" id="generate">Générer un faux plein</button>
+
+                <!-- TODO : import file with data -->
+                <!-- <button class="btn blue" id="import">
+                Importer un fichier</button> -->
+
+            </div>
+
+            <div class="panel center" id="stats">
+                <h1 id="no-data">Aucune donnée renseignée</h1>
+                <div id="data-ok">
+                    <h1>Statistiques globales</h1>
+                    <p>Vous avez parcouru <span class="labelled" id="stats-kmttl"></span> et dépensé <span class="labelled" id="stats-spend"></span> dans <span class="labelled" id="stats-qtt"></span> de carburant pour une consommation moyenne de <span class="labelled" id="stats-consume"></span></p>
+
+                    <h1>Consommation</h1>
+                    <div id="chartConsumption" class="graph"></div>
+                    <h1>Prix du carburant</h1>
+                    <div id="chartPrice" class="graph"></div>
+
+                    <!-- TODO : annual stats -->
+                    <!-- <h1>Statistiques annuelles</h1>
+                    <p>Cette année, vous avez parcouru <span class="labelled">7120 km</span> et dépensé <span class="labelled">824 €</span> dans <span class="labelled">620 L</span> de carburant pour une consommation moyenne de <span class="labelled">6,5 L/100 km</span></p>
+                    <p>Chaque année, vous parcourez en moyenne <span class="labelled">7120 km</span> et dépensez en moyenne <span class="labelled">824 €</span> dans <span class="labelled">620 L</span> de carburant pour une consommation moyenne de <span class="labelled">6,5 L/100 km</span></p> -->
+                    
+                    <button class="btn blue" id="getDataFile">
+                Exporter mes données</button>
+                    <button class="btn red" id="delete">Tout supprimer</button>
+                </div>
+            </div>
+
+            <div class="panel right" id="about">
+                <h1>À PROPOS</h1>
+                <img class="about-logo" src="img/logo.png">
+                <p><b>myCarbuGestion</b> est une application mobile de suivi de consommation de carburant développée par <a href="https://klemart3d.fr" target="_blank">Klemart3D</a></p>
+                <br><p>Sur une idée originale de : <a href="http://www.lea-dallazanna.com/" target="_blank">Léa Dalla-Zanna</a>, <a href="http://audricmas.fr/" target="_blank">Audric Mas</a>, <a href="http://tommyloska.fr/" target="_blank">Tommy Loska</a> et <a href="https://klemart3d.fr" target="_blank">Klément Grisel</a></p>
+                <br><p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr"><img alt="Licence Creative Commons" style="border-width:0" src="img/by-sa_4.0.png" /></a><br />Cette application, son nom et ses logos sont mis à disposition selon les termes de la <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">Licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International</a></p>
+            </div>
+        </section>
+        <nav>
+            <hr id="nav-line">
+            <a id="nav-new" class="nav-toggle active" href="#new" data-transition="slide">New</a>
+            <a id="nav-stats" class="nav-toggle" href="#stats" data-transition="slide">Stats</a>
+            <a id="nav-about" class="nav-toggle" href="#about" data-transition="slide">About</a>
+        </nav>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/raphael.min.js"></script>
+        <script type="text/javascript" src="js/morris.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

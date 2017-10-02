@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="fr.klemart3d.myCarbuGestion" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Device">
+        <param name="browser-package" value="Device" />
+    </feature>
+    <name>myCarbuGestion</name>
+    <description>
+        Mon gestionnaire d'essence qui carbure ! Suivez et analysez facilement la consommation en carburant de vos véhicules.
+    </description>
+    <author email="contact@klemart3d.fr" href="https://klemart3d.fr">
+        Klemart3D
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="blob:*" />
+    <preference name="SplashScreenDelay" value="3200" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="SplashScreen" value="img/logo-mcg.png" />
+    <preference name="ShowSplashScreen" value="false" />
+</widget>
